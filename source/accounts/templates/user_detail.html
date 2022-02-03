@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "User" %} {{ user_object.username }}{% endblock %}
+
+{% block content %}
+
+    <div class="text-center">
+        <h1>{% trans "Profile" %}</h1>
+        {% ifequal user user_object %}
+            <p><a class="text-decoration-none" href="{% url "accounts:edit_profile" user_object.pk %}">{% trans "EditProfileLink" %}</a></p>
+            <p><a class="text-decoration-none" href="{% url "accounts:change_password" user_object.pk %}">{% trans "ChangePasswordLink" %}</a></p>
+        {% endifequal %}
+        <p><b>{% blocktrans %}User's phone number: {% endblocktrans %}</b>{{ user_object.phone }}</p>
+        {% if user_object.first_name %}
+            <p><b>{% trans "Name" %}: </b>{{ user_object.first_name }}</p>
+        {% endif %}
+    </div>
+
+{% endblock %}
