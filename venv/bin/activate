@@ -46,7 +46,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV='/home/mr-wolfoff/Рабочий стол/python/test/perms/venv'
+VIRTUAL_ENV='/home/mrwolfoff/Документы/Python/ESDP/test/test/test/venv'
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

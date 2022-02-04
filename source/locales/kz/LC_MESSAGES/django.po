@@ -31,7 +31,7 @@ msgstr "Берілген телефон орнатылуы керек"
 
 #: accounts/models.py:36
 msgid "PhoneValidatorMessage"
-msgstr "Телефон нөмірі келесі форматта енгізілуі керек: '+77071234567'"
+msgstr "Телефон нөмірі келесі форматта енгізілуі керек: '77071234567'"
 
 #: accounts/models.py:37
 msgid "PhoneNumber"
