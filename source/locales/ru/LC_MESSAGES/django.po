@@ -41,7 +41,7 @@ msgstr "Телефонный номер"
 
 #: accounts/models.py:38
 msgid "HelpTextPhone"
-msgstr "Введите 10-значный номер телефона с +7"
+msgstr "Введите 10-значный номер телефона с 7"
 
 #: accounts/models.py:39
 msgid "TelegramID"

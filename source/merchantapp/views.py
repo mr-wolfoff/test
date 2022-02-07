@@ -12,12 +12,12 @@ from django.views.generic import ListView, TemplateView, CreateView, UpdateView
 from django.contrib.auth.mixins import UserPassesTestMixin
 
 from merchantapp.forms import UserSearchForm, ProgramForm, BranchForm, AddressForm
-from merchantapp.models import Program, Branch, Order, UserReward
+from merchantapp.models import Program, Branch, Order, UserReward, Merchant
 
 
 class PermissionAccessMixin(UserPassesTestMixin):
     def test_func(self):
-        return self.request.user.is_superuser or self.request.user.groups.filter(name="Merch-man") or\
+        return self.request.user.is_superuser or self.request.user.groups.filter(name="Merch-man") or \
                self.request.user.groups.filter(name="Stuff")
 
 
@@ -42,7 +42,8 @@ class CustomerSearchView(PermissionAccessMixin, ListView):
 
     def get_queryset(self):
         if self.search_value:
-            queryset = super().get_queryset()
+            queryset = super().get_queryset().filter()
+            print('--------------------------------------------------', queryset)
             query = self.get_query()
             queryset = queryset.filter(query)
             return queryset
@@ -66,6 +67,14 @@ class CustomerListView(PermissionAccessMixin, ListView):
     def test_func(self):
         return super().test_func() or self.request.user.groups.filter(name="Merch-emp")
 
+    # def get_queryset(self):
+    #     self.queryset = super().get_queryset().filter(
+    #                             Order.objects.filter(
+    #                             program=Program.objects.filter(
+    #                             branch=Branch.objects.filter(
+    #                             merchant=Merchant.objects.filter()))))
+    #     return self.queryset
+
 
 class MerchantIndexView(PermissionAccessMixin, TemplateView):
     template_name = 'index.html'
@@ -80,6 +89,9 @@ class ProgramListView(PermissionAccessMixin, ListView):
 
     def test_func(self):
         return super().test_func() or self.request.user.groups.filter(name="Merch-emp")
+
+    def get_queryset(self):
+        return super().get_queryset().filter()
 
 
 class ProgramCreateView(PermissionAccessMixin, CreateView):
@@ -106,6 +118,9 @@ class BranchListView(PermissionAccessMixin, ListView):
 
     def test_func(self):
         return super().test_func() or self.request.user.groups.filter(name="Merch-emp")
+
+    def get_queryset(self):
+        return super().get_queryset().filter()
 
 
 class BranchCreateView(PermissionAccessMixin, CreateView):
@@ -201,6 +216,9 @@ class OrderProcessingView(PermissionAccessMixin, ListView):
     def test_func(self):
         return super().test_func() or self.request.user.groups.filter(name="Merch-emp")
 
+    def get_queryset(self):
+        return super().get_queryset().filter()
+
 
 class OrderCreateView(PermissionAccessMixin, CreateView):
     model = Order
@@ -256,6 +274,7 @@ def access_required(function):
             return HttpResponseForbidden()
         else:
             return function(request, *args, **kwargs)
+
     return wrapper
 
 

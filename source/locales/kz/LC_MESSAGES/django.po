@@ -39,7 +39,7 @@ msgstr "Телефон нөмірі"
 
 #: accounts/models.py:38
 msgid "HelpTextPhone"
-msgstr "+7 арқылы 10 таңбалы телефон нөмірін енгізіңіз"
+msgstr "7 арқылы 10 таңбалы телефон нөмірін енгізіңіз"
 
 #: accounts/models.py:39
 msgid "TelegramID"
