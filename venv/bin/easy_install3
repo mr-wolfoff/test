@@ -1,4 +1,6 @@
-#!/home/mrwolfoff/Документы/Python/ESDP/test/test/test/venv/bin/python
+#!/bin/sh
+'''exec' "/home/mr-wolfoff/Рабочий стол/python/test/perms/test/venv/bin/python" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys

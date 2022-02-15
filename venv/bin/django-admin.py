@@ -1,4 +1,4 @@
-#!/home/mrwolfoff/Документы/Python/ESDP/test/test/test/venv/bin/python
+#!/home/mr-wolfoff/Рабочий стол/python/test/perms/test/venv/bin/python
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
